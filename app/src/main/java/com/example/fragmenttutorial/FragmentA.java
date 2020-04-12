@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,19 +20,33 @@ public class FragmentA extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button gotoB = view.findViewById(R.id.gotoFragmentB);
-        gotoB.setOnClickListener(new View.OnClickListener() {
+        Button doneBtn = view.findViewById(R.id.gotoFragmentB);
+        doneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                  EditText editText = view.findViewById(R.id.et_a);
+                /*String data = editText.getText().toString();
+
+                Bundle bundle = new Bundle();
+                bundle.putString(FragmentB.EXTRA_KET_DATA,data);
+
+                FragmentB fragmentB = new FragmentB();
+                fragmentB.setArguments(bundle);
+                */
+
+
+
+
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer,new FragmentB());
+                fragmentTransaction.replace(R.id.fragmentContainer,FragmentB.newInstance(
+                        editText.getText().toString()
+                ));
                 fragmentTransaction.commit();
                 fragmentTransaction.addToBackStack(null);
             }
         });
-
     }
 }

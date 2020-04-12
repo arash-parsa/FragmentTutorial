@@ -5,16 +5,12 @@
     >
 
     <TextView
+        android:id="@+id/tv_b"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="B"
         android:textSize="26sp"
         android:layout_gravity="center"/>
 
-    <FrameLayout
-        android:id="@+id/frame_b_fragmentContainer"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:layout_gravity="bottom|center"/>
 
 </FrameLayout>
